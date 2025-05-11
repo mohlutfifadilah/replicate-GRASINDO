@@ -1,0 +1,37 @@
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.header {
+    background: url("{{ asset('storage/assets/image/sindoro.jpg') }}") no-repeat center center;
+    background-size: cover;
+    padding: 100px 0;
+    color: white;
+}
+
+.about-us {
+    padding: 50px 0;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.expedition-leaders {
+    padding: 50px 0;
+    background-color: #333;
+    color: white;
+}
+
+.expedition-leaders h2 {
+    margin-bottom: 30px;
+}
+
+.img-fluid {
+    height: 200px; /* Set a specific height for consistency */
+    object-fit: cover; /* Ensures images cover the area without distortion */
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+}
