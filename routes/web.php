@@ -1,7 +1,16 @@
 <?php
 
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\BlacklistController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\IdentitasController;
+use App\Http\Controllers\KewarganegaraanController;
+use App\Http\Controllers\KuotaController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PendaftarController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\RiwayatController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,13 +26,26 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('app');
 
 
 # Login
 
-Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/login', [LoginController::class, 'post_login'])->name('post_login');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
 # Logout
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
+# Admin
+Route::get('/dashboard',  [DashboardController::class, 'index']);
+Route::resource('users', UsersController::class);
+Route::resource('blacklist', BlacklistController::class);
+Route::resource('kewarganegaraan', KewarganegaraanController::class);
+Route::resource('identitas', IdentitasController::class);
+Route::resource('berita', BeritaController::class);
+Route::resource('kuota', KuotaController::class);
+Route::resource('pendaftar', PendaftarController::class);
+Route::resource('riwayat', RiwayatController::class);
