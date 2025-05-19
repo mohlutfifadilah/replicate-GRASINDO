@@ -49,3 +49,8 @@ Route::resource('berita', BeritaController::class);
 Route::resource('kuota', KuotaController::class);
 Route::resource('pendaftar', PendaftarController::class);
 Route::resource('riwayat', RiwayatController::class);
+
+// Tambahkan route untuk URI yang diinginkan
+Route::get('/is_verified/{id}', [UsersController::class, 'verifyUser'])->name('is_verified');
+Route::get('/is_blacklist/{id}', [UsersController::class, 'blacklistUser'])->name('is_blacklist');
+Route::get('/is_success/{id}', [PendaftarController::class, 'success'])->name('is_success');
