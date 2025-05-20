@@ -56,7 +56,7 @@
             margin-bottom: 10px;
         }
 
-        .card {
+        /* .card {
             border: none;
             text-align: center;
             margin-bottom: 20px;
@@ -83,23 +83,24 @@
         }
         .container-fluid.package {
             overflow-x: hidden;
-        }
+        } */
         .social-icons {
         display: flex;
-        gap: 30px;
+        gap: 15px;
         }
 
         .social-icon {
-        width: 50px;
-        height: 50px;
+        width: 30px;
+        height: 30px;
         display: flex;
         justify-content: center;
         align-items: center;
         border-radius: 50%;
-        font-size: 25px;
+        font-size: 15px;
         text-decoration: none;
         color: white;
         transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        margin-left: 5px;
         }
 
         .instagram {
@@ -120,7 +121,7 @@
         color: none;
         }
 
-        .myaccordion {
+        /* .myaccordion {
         box-shadow: 0 0 1px rgba(0,0,0,0.1);
         }
 
@@ -142,7 +143,7 @@
         .myaccordion .btn-link:hover,
         .myaccordion .btn-link:focus {
         text-decoration: none;
-        }
+        } */
 
     </style>
 </head>
