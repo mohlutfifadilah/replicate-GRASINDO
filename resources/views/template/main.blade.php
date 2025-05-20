@@ -5,78 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
-    <link rel="icon" type="image/png" href="{{ asset('logo.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('storage/assets/image/logo.png') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link href="https://fonts.cdnfonts.com/css/konkhmer-sleokchher" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
     <style>
         *{
-            font-family: 'Konkhmer Sleokchher', sans-serif;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
+            font-family: 'Poppins', sans-serif;
         }
         h1, h2, h3, h4, h5{
-            color: #41AB5D;
-        }
-        .full-screen {
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            color: #FF8D21;
         }
 
-        .navbar-child {
-            width: 100%;
-            background: #41AB5D;
-            transition: all 0.4s ease-in-out;
-            padding: 20px 0;
-            z-index: 1050;
-            /* Tambahkan ini */
+        nav {
+            background-color: #FF8D21;
         }
 
-        /* --- Navbar awal transparan & absolute --- */
-        .navbar.navbar-main {
-            position: absolute;
-            width: 100%;
-            background: transparent;
-            transition: all 0.4s ease-in-out;
-            padding: 20px 0;
-            z-index: 1050;
-            /* Tambahkan ini */
-        }
-
-        .navbar-brand img {
+        .navbar .navbar-brand img {
             width: 80px;
-            transition: width 0.4s ease-in-out;
-        }
-
-        /* --- Saat di-scroll, navbar berubah menjadi fixed --- */
-        .navbar.scrolled.navbar-main {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: #41AB5D;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 10px 0;
-        }
-
-        /* --- Logo mengecil saat scroll --- */
-        .navbar.scrolled.navbar-main .navbar-brand img {
-            width: 60px;
-        }
-
-        .navbar-child .navbar-brand img {
-            width: 60px;
         }
 
         .navbar .navbar-collapse ul li.nav-item {
             margin-right: 30px;
+            font-size: 14px;
+        }
+
+        .navbar .navbar-collapse ul li.nav-item .nav-link {
+            color: white;
+        }
+
+        .navbar .navbar-collapse ul li.nav-item.active {
+            color: white;
+            font-weight: bold;
+            border-bottom: 2px solid white;
+        }
+
+        .carousel,
+        .carousel .carousel-inner .carousel-item img {
+            max-height: 625px;
         }
 
         .adventage {
-            /* background-color: #93d1a4; */
+            font-size: 14px;
+            background-color: white;
+        }
+
+        h1.icon {
+            font-size: 36px;
+            margin-bottom: 10px;
         }
 
         .card {
@@ -94,23 +71,6 @@
             overflow: hidden;
         }
 
-        .main::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 500px;
-            background: rgba(0, 0, 0, 0.3);
-            /* Warna hitam dengan transparansi */
-            z-index: 1;
-        }
-
-        .main img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
         .package .card:before {
             content: "";
             position: absolute;
@@ -118,7 +78,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Warna hitam dengan transparansi */
+            background: rgba(0, 0, 0, 0.5);
             z-index: 1;
         }
         .container-fluid.package {

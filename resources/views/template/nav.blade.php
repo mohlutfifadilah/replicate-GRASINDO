@@ -1,6 +1,7 @@
-<nav id="{{ Request::segment(1) === null ? 'navbar-main' : 'navbar' }}" class="{{ Request::segment(1) === null ? ' navbar navbar-main' : 'navbar navbar-child' }} navbar-expand-lg navbar-dark">
+<nav id="" class="navbar navbar-expand-lg py-0 my-0 fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="/"><img src="{{ asset('logo.png') }}" alt="Logo"></a> <span class="mt-1 text-white">Grasindo</span>
+        <a class="navbar-brand" href="/"><img class="img-fluid" src="{{ asset('storage/assets/image/logo.png') }}" alt="Logo"></a>
+        {{-- <span class="mt-1 text-white">Grasindo</span> --}}
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>

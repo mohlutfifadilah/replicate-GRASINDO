@@ -1,37 +1,59 @@
 @extends('template.main')
-@section('title', 'Canyoning Baturraden')
+@section('title', 'GRASINDO')
 @section('content')
-<div class="container-fluid p-0">
-    <div class="main text-center">
-        <img class="d-block w-100 m-0" src="{{ asset('storage/assets/image/sindoro.jpg') }}" alt="">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <h1 class="mt-5">GRASINDO</h1>
-        <a href="" class="btn btn-primary">Booking Sekarang!</a>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{{ asset('storage/assets/image/carousel1.jpg') }}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="{{ asset('storage/assets/image/carousel1.jpg') }}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="{{ asset('storage/assets/image/carousel1.jpg') }}" class="d-block w-100" alt="...">
+        </div>
     </div>
 </div>
 <div class="container-fluid adventage">
-    <div class="row p-5 text-center">
-        <div class="col-6 col-md-4">
-            <h1 class="">
-                <ion-icon name="accessibility"></ion-icon> 150+
+    <h1 class="mb-0 mt-4 text-center">
+        Fasilitas
+    </h1>
+    <div class="row px-5 pb-5 pt-2 mt-4 text-center">
+        <div class="col-lg-2 col-md-6 col-sm-6">
+            <h1 class="icon">
+                <i class="fas fa-restroom"></i>
             </h1>
-            <p>Participants have tried this</p>
+            <p>Toilet</p>
         </div>
-        <div class="col-6 col-md-4">
-            <h1 class="">
-                <ion-icon name="happy"></ion-icon> 100+
+        <div class="col-lg-2 col-md-6 col-sm-6">
+            <h1 class="icon">
+                <i class="fas fa-parking"></i>
             </h1>
-            <p>Delightful testimony</p>
+            <p>Parkir</p>
         </div>
-        <div class="col-6 col-md-4">
-            <h1 class="">
-                <ion-icon name="file-tray-stacked"></ion-icon> 2
+        <div class="col-lg-2 col-md-6 col-sm-6">
+            <h1 class="icon">
+                <i class="fas fa-store-alt"></i>
             </h1>
-            <p>Frequently package</p>
+            <p>Warung</p>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6">
+            <h1 class="icon">
+                <i class="fas fa-mosque"></i>
+            </h1>
+            <p>Mushola</p>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6">
+            <h1 class="icon">
+                <i class="fas fa-motorcycle"></i>
+            </h1>
+            <p>Ojek</p>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6">
+            <h1 class="icon">
+                <i class="fas fa-home"></i>
+            </h1>
+            <p>Tempat Singgah</p>
         </div>
     </div>
 </div>
@@ -116,10 +138,10 @@
     </div>
 </div> --}}
 
-<div class="container-fluid">
+{{-- <div class="container-fluid">
     <iframe src="https://youtube.com/embed/36TEuXajmUE?controls=1" width="100%" height="450" style="border:0;"
         allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-</div>
+</div> --}}
 
 {{-- <div class="parallax-section mt-5">
     <div class="parallax-window" data-parallax="scroll" data-image-src="{{ asset('assets/img/parallax.jpg') }}">
@@ -150,28 +172,5 @@
 @endsection --}}
 @section('script')
 <script>
-    var $item = $('.main');
-    // var $wHeight = $(window).height();
-    // $item.eq(0).addClass('active');
-    $item.height(500);
-    $item.addClass('full-screen');
-
-    $('.main img').each(function() {
-        var $src = $(this).attr('src');
-        var $color = $(this).attr('data-color');
-        $(this).parent().css({
-            'background-image' : 'url(' + $src + ')',
-            'background-color' : $color
-        });
-        $(this).remove();
-    });
-    // Menambahkan class 'scrolled' saat user scroll
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 100) {
-            $('#navbar-main').addClass('scrolled');
-        } else {
-            $('#navbar-main').removeClass('scrolled');
-        }
-    });
 </script>
 @endsection
