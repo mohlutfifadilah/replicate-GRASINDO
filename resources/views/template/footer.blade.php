@@ -11,8 +11,8 @@
                     <div class="container-fluid">
                         <hr style="background-color: #FFFFFF;">
                         <div class="contact" style="font-size: 14px; margin-left: 5px;">
-                            <ion-icon name="logo-whatsapp"></ion-icon> 082189374092 (Basecamp) <br> <br>
-                            <ion-icon name="logo-whatsapp"></ion-icon> 082189374092 (Mas Rahmat)
+                            <ion-icon name="logo-whatsapp" class="text-white bg-success p-1"></ion-icon> 082189374092 (Basecamp) <br> <br>
+                            <ion-icon name="logo-whatsapp" class="text-white bg-success p-1"></ion-icon> 082189374092 (Mas Rahmat)
                         </div>
                     </div>
                 </div>

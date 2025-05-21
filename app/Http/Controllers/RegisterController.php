@@ -5,17 +5,24 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RegisterController extends Controller
 {
     //
+    public function index(){
+        return view('register');
+    }
+
     public function register(Request $request){
 
         if (is_null($request->kewarganegaraan)) {
+            Alert::error('Error', 'Terjadi Kesalahan');
             return redirect()->route('register')->with('kewarganegaraan', 'Kewarganegaraan harus diisi');
         }
 
         if (is_null($request->identitas)) {
+            Alert::error('Error', 'Terjadi Kesalahan');
             return redirect()->route('register')->with('identitas', 'Identitas harus diisi');
         }
 
@@ -25,6 +32,7 @@ class RegisterController extends Controller
             // Periksa apakah ukuran file melebihi batas maksimum (2 MB)
             if ($fileSize > 2 * 1024 * 1024 || $fileSize === False) {
                 // File terlalu besar, kembalikan respons dengan pesan kesalahan
+                Alert::error('Error', 'Terjadi Kesalahan');
                 return redirect()->back()->with('fotoidentitas', 'Ukuran file tidak lebih dari 2 mb');
             }
             $file = $request->file('fotoidentitas');
@@ -32,67 +40,83 @@ class RegisterController extends Controller
             $file->move('storage/fotoidentitas/', $image);
             $image = str_replace('fotoidentitas/', '', $image);
         } else {
+            Alert::error('Error', 'Terjadi Kesalahan');
             return redirect()->route('register')->with('fotoidentitas', 'File Identitas harus diisi');
         }
 
         if (is_null($request->nama_lengkap)) {
+            Alert::error('Error', 'Terjadi Kesalahan');
             return redirect()->route('register')->with('nama_lengkap', 'Nama Lengkap harus diisi');
         }
 
         if (is_null($request->no_identitas)) {
+            Alert::error('Error', 'Terjadi Kesalahan');
             return redirect()->route('register')->with('no_identitas', 'Nomor Identitas harus diisi');
         }
 
         if (is_null($request->email)) {
+            Alert::error('Error', 'Terjadi Kesalahan');
             return redirect()->route('register')->with('email', 'Email harus diisi');
         }
 
         // Validasi apakah input email valid
         if (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
+            Alert::error('Error', 'Terjadi Kesalahan');
             return redirect()->route('register')->with('email', 'Format Email tidak valid');
         }
 
         if (is_null($request->no_telepon)) {
+            Alert::error('Error', 'Terjadi Kesalahan');
             return redirect()->route('register')->with('no_telepon', 'Nomor Telepon harus diisi');
         }
 
         if (!is_numeric($request->no_telepon)) {
+            Alert::error('Error', 'Terjadi Kesalahan');
             return redirect()->route('register')->with('no_telepon', 'Nomor Telepon harus berupa angka');
         }
 
         if (is_null($request->alamat)) {
+            Alert::error('Error', 'Terjadi Kesalahan');
             return redirect()->route('register')->with('alamat', 'Alamat harus diisi');
         }
 
         if (is_null($request->usia)) {
+            Alert::error('Error', 'Terjadi Kesalahan');
             return redirect()->route('register')->with('usia', 'Usia harus diisi');
         }
 
         if (!is_numeric($request->usia)) {
+            Alert::error('Error', 'Terjadi Kesalahan');
             return redirect()->route('register')->with('usia', 'Usia harus berupa angka');
         }
 
         if (is_null($request->tinggi_badan)) {
+            Alert::error('Error', 'Terjadi Kesalahan');
             return redirect()->route('register')->with('tinggi_badan', 'Tinggi Badan harus diisi');
         }
 
         if (!is_numeric($request->tinggi_badan)) {
+            Alert::error('Error', 'Terjadi Kesalahan');
             return redirect()->route('register')->with('tinggi_badan', 'Tinggi Badan harus berupa angka');
         }
 
         if (is_null($request->tinggi_badan)) {
+            Alert::error('Error', 'Terjadi Kesalahan');
             return redirect()->route('register')->with('tinggi_badan', 'Tinggi Badan harus diisi');
         }
 
         if (!is_numeric($request->tinggi_badan)) {
+            Alert::error('Error', 'Terjadi Kesalahan');
             return redirect()->route('register')->with('tinggi_badan', 'Tinggi Badan harus berupa angka');
         }
 
         if (is_null($request->username)) {
+            Alert::error('Error', 'Terjadi Kesalahan');
             return redirect()->route('register')->with('username', 'Username harus diisi');
         }
 
         if (is_null($request->password)) {
+            Alert::error('Error', 'Terjadi Kesalahan');
             return redirect()->route('register')->with('password', 'Password harus diisi');
         }
 
@@ -141,6 +165,7 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        Alert::success('Sukses', 'Akun berhasil dibuat, tunggu verifikasi dari admin');
         return redirect()->route('app')->with('sukses', 'Berhasil membuat akun, harap tunggu verifikasi dari admin');
     }
 }

@@ -25,12 +25,13 @@ class LoginController extends Controller
         }
         $credentials = $request->only('username', 'password');
 
-        $user = User::all();
         if (Auth::attempt($credentials)) {
             if(Auth::user()->kode_pendaki === null){
                 return redirect('dashboard');
             } else {
                 if(Auth::user()->is_verified != 1){
+                    Auth::logout();
+                    Session::flush();
                     Alert::error('Error', 'Akun belum terverifikasi oleh admin');
                     return redirect()->route('app')->with('error', 'Akun belum terverifikasi oleh admin');
                 } else {
@@ -39,6 +40,8 @@ class LoginController extends Controller
             }
         }
         Alert::error('Error', 'Username atau Password salah!');
+        Auth::logout();
+        Session::flush();
         return Redirect('/login')->with('credentials', 'Username atau Password salah!');
     }
 

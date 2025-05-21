@@ -20,18 +20,20 @@
     <link href="{{ asset('sbadmin2/css/sb-admin-2.min.css') }}" rel="stylesheet" />
 </head>
 
-<body class="bg-gradient-primary">
+<body class="" style="background-color: #FF8D21;">
     @include('sweetalert::alert')
     <div class="container">
         <!-- Outer Row -->
         <div class="row justify-content-center">
-            <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="col-xl-10 col-lg-12 col-md-9 mt-5 pt-5">
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image">
+                                <img src="{{ asset('storage/assets/image/logo.png') }}" alt="" class="img-fluid">
+                            </div>
+                            <div class="col-lg-6 mt-5 pt-4">
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">
@@ -49,15 +51,16 @@
                                                 id="password" name="password" placeholder="Password"/>
                                         </div>
                                         <hr>
-                                        <button class="btn btn-primary btn-user btn-block" type="submit">
+                                        <button class="btn btn-user btn-block text-white" type="submit" style="background-color: #FF8D21;">
                                             Login
                                         </button>
-                                        {{-- <div class="text-center">
-                                            <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                        </div> --}}
-                                        {{-- <div class="text-center">
-                                            <a class="small" href="register.html">Create an Account!</a>
-                                        </div> --}}
+                                        <div class="text-center mt-5">
+                                            <a class="small text-decoration-none" href="/register">Belum punya akun ? Buat akun!</a>
+                                        </div>
+                                        <hr>
+                                        <div class="text-center">
+                                            <a class="small text-decoration-none" href="/">Kembali ke Beranda</a>
+                                        </div>
                                     </form>
                                 </div>
                             </div>

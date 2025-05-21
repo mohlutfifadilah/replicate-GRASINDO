@@ -2,15 +2,21 @@
 
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\BlacklistController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IdentitasController;
 use App\Http\Controllers\KewarganegaraanController;
 use App\Http\Controllers\KuotaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PendaftarController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\UsersController;
+use App\Models\Identitas;
+use App\Models\Kewarganegaraan;
+use App\Models\Kuota;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,12 +34,56 @@ Route::get('/', function () {
     return view('home');
 })->name('app');
 
+Route::get('/panduan', function () {
+    return view('panduan');
+});
+
+Route::get('/sop', function () {
+    return view('sop');
+});
+
+Route::get('/cek_kuota', function () {
+    // Ambil tanggal sekarang
+    $today = now();
+
+    // Ambil tanggal akhir bulan
+    $endOfMonth = $today->endOfMonth();
+    // Ambil semua data kuota yang memiliki tanggal naik di antara tanggal sekarang dan akhir bulan
+    $kuota = Kuota::whereBetween('tanggal', [now()->toDateString(), $endOfMonth->toDateString()])->get();
+
+    return view('kuota', compact('kuota'));
+});
+
+// Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
+Route::get('/booking', [BookingController::class, 'index'])->name('booking');
+Route::get('/booking/{id}', [BookingController::class, 'booking'])->name('bookingg');
+Route::delete('/hapus_booking/{id}', [BookingController::class, 'delete'])->name('hapus_booking');
+Route::post('/registrasi/{id}', [BookingController::class, 'registrasi'])->name('registrasi');
 
 # Login
 
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'post_login'])->name('post_login');
+Route::get('/register', function () {
+    $segment = Request::segment(1);
+    if ($segment === null) {
+        $segment = 'beranda';
+    }
+    $kw = Kewarganegaraan::all();
+    $identitas = Identitas::all();
+    return view('daftar', [
+        'segment' => $segment,
+        'kw' => $kw,
+        'identitas' => $identitas
+    ]);
+})->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
+
+Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
+Route::get('/booking', [BookingController::class, 'index'])->name('booking');
+Route::get('/booking/{id}', [BookingController::class, 'booking'])->name('bookingg');
+Route::delete('/hapus_booking/{id}', [BookingController::class, 'delete'])->name('hapus_booking');
+Route::post('/registrasi/{id}', [BookingController::class, 'registrasi'])->name('registrasi');
 
 # Logout
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
