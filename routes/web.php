@@ -16,6 +16,7 @@ use App\Http\Controllers\UsersController;
 use App\Models\Identitas;
 use App\Models\Kewarganegaraan;
 use App\Models\Kuota;
+use App\Models\User;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -39,7 +40,8 @@ Route::get('/panduan', function () {
 });
 
 Route::get('/sop', function () {
-    return view('sop');
+    $user = User::whereNotNull('kode_pendaki')->where('status', '=', 0)->get();
+    return view('sop', compact('user'));
 });
 
 Route::get('/cek_kuota', function () {
