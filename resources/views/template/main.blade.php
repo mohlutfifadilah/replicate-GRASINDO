@@ -8,8 +8,10 @@
     <link rel="icon" type="image/png" href="{{ asset('storage/assets/image/logo.png') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('css/foundation-datepicker.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         *{
             font-family: 'Poppins', sans-serif;
@@ -163,6 +165,17 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script src="{{ asset('js/foundation-datepicker.js') }}"></script>
+    <script src="{{ asset('js/foundation-datepickerid.js') }}"></script>
+    <script>
+        $(document).foundation();
+
+        $('.fdatepicker').fdatepicker({
+            language: 'id'
+        });
+    </script>
 </body>
 
 </html>

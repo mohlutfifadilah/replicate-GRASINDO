@@ -36,7 +36,7 @@ class BookingController extends Controller
             return redirect('/login')->with('error','Kamu harus login dulu');
         }
         $pendaftar = Pendaftar::where('kode_pendaki', '=', Auth::user()->kode_pendaki)->where('status', '=', 0)->first();
-        
+
         if($pendaftar){
             return redirect('booking')->with('error','Tidak bisa registrasi lebih dari 1');
         }
@@ -110,7 +110,8 @@ class BookingController extends Controller
         $kuota->update([
             'kuota_sisa' => $kuota->kuota_sisa+$jumlahPendaki+1,
         ]);
-        return redirect()->route('app')->with('sukses', 'Registrasi Pendakian Berhasil!');
+        Alert::success('Berhasil', 'Booking berhasil, silahkan lanjutkan pembayaran!');
+        return redirect()->route('booking')->with('sukses', 'Registrasi Pendakian Berhasil!');
     }
     public function delete($id){
 
@@ -124,7 +125,35 @@ class BookingController extends Controller
             'kuota_sisa' => $kuota->kuota_sisa-$total_pendaki,
         ]);
         $data->delete();
+        Alert::success('Berhasil', 'Booking berhasil dihapus');
+        return redirect('booking')->with('sukses','Booking berhasil dihapus');
+    }
 
+    public function bayar(Request $request, $id){
+
+        if ($request->file('bukti')) {
+            // Ambil ukuran file dalam bytes
+            $fileSize = $request->file('bukti')->getSize();
+            // Periksa apakah ukuran file melebihi batas maksimum (2 MB)
+            if ($fileSize > 2 * 1024 * 1024 || $fileSize === False) {
+                // File terlalu besar, kembalikan respons dengan pesan kesalahan
+                Alert::error('Error', 'Ukuran file tidak lebih dari 2 mb');
+                return redirect()->back()->with('bukti', 'Ukuran file tidak lebih dari 2 mb');
+            }
+            $file = $request->file('bukti');
+            $image = $request->file('bukti')->store('bukti');
+            $file->move('storage/bukti/', $image);
+            $image = str_replace('bukti/', '', $image);
+        } else {
+            Alert::error('Error', 'Bukti Pembayaran harus diisi');
+            return redirect()->back()->with('bukti', 'Bukti Pembayaran harus diisi');
+        }
+        $pendaftar = Pendaftar::find($id);
+
+        $pendaftar->update([
+            'bukti' => $pendaftar->bukti,
+        ]);
+        Alert::success('Berhasil', 'Pembayaran berhasil!');
         return redirect('booking')->with('sukses','Booking berhasil dihapus');
     }
 }

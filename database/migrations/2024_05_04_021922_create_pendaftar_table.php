@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('alamat')->nullable();
             $table->date('tanggal_naik')->nullable();
             $table->date('tanggal_turun')->nullable();
+            $table->text('bukti')->nullable();
             $table->integer('status')->nullable();
             $table->timestamps();
         });

@@ -84,8 +84,9 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
 Route::get('/booking', [BookingController::class, 'index'])->name('booking');
 Route::get('/booking/{id}', [BookingController::class, 'booking'])->name('bookingg');
-Route::delete('/hapus_booking/{id}', [BookingController::class, 'delete'])->name('hapus_booking');
 Route::post('/registrasi/{id}', [BookingController::class, 'registrasi'])->name('registrasi');
+Route::post('/bayar/{id}', [BookingController::class, 'bayar'])->name('bayar');
+Route::delete('/hapus_booking/{id}', [BookingController::class, 'delete'])->name('hapus_booking');
 
 # Logout
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
