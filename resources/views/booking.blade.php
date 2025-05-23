@@ -27,6 +27,7 @@
                                     <th>Tanggal Turun</th>
                                     <th>Total Harga</th>
                                     <th>Registrasi</th>
+                                    <th>Status</th>
                                     <th>Opsi</th>
                                 </tr>
                             </thead>
@@ -76,6 +77,13 @@
                                     <td>{{ $pendaftar_first->tanggal_turun }}</td>
                                     <td>Rp. {{ number_format($harga * $count_pendaftar, 0, ',', '.') }}</td>
                                     <td>{{ $pendaftar_first->created_at }}</td>
+                                    <td>
+                                        @if (is_null($pendaftar_first->bukti))
+                                            <span class="badge badge-pill badge-warning text-white" style="font-size: 11px;">Belum Lunas</span>
+                                        @else
+                                            <span class="badge badge-pill badge-success" style="font-size: 11px;">Lunas</span>
+                                        @endif
+                                    </td>
                                     <td class="text-center">
                                         <form action="{{ route('bayar', $pendaftar_first->id) }}" method="post" enctype="multipart/form-data">
                                             @csrf
@@ -186,7 +194,7 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach ($pendaftar as $p)
+                                                                @foreach ($riwayat as $p)
                                                                 <tr>
                                                                     <td>{{ $p->nama }}</td>
                                                                     <td>{{ $p->usia }}</td>
@@ -203,7 +211,7 @@
                                     </td>
                                     <td>{{ $riwayat_first->tanggal_naik }}</td>
                                     <td>{{ $riwayat_first->tanggal_turun }}</td>
-                                    <td>Rp. {{ number_format($harga * $count_pendaftar, 0, ',', '.') }}</td>
+                                    <td>Rp. {{ number_format($harga * $count_riwayat, 0, ',', '.') }}</td>
                                     <td>{{ $riwayat_first->created_at }}</td>
                                 </tr>
                             </tbody>

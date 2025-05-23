@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class RegisterController extends Controller
@@ -166,6 +168,8 @@ class RegisterController extends Controller
         ]);
 
         Alert::success('Sukses', 'Akun berhasil dibuat, tunggu verifikasi dari admin');
+        Auth::logout();
+        Session::flush();
         return redirect()->route('app')->with('sukses', 'Berhasil membuat akun, harap tunggu verifikasi dari admin');
     }
 }

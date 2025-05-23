@@ -52,7 +52,7 @@ class PendaftarController extends Controller
         //
         $get = Pendaftar::find($id);
         $pendaftar = Pendaftar::where('kode_pendaki', $get->kode_pendaki)->where('status', 0)->get();
-        return view('admin.pendaftar.info',compact('pendaftar'));
+        return view('admin.pendaftar.info',compact('pendaftar', 'get'));
     }
 
     /**

@@ -151,7 +151,7 @@ class BookingController extends Controller
         $pendaftar = Pendaftar::find($id);
 
         $pendaftar->update([
-            'bukti' => $pendaftar->bukti,
+            'bukti' => $image,
         ]);
         Alert::success('Berhasil', 'Pembayaran berhasil!');
         return redirect('booking')->with('sukses','Booking berhasil dihapus');

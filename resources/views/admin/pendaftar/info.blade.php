@@ -9,6 +9,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-body">
+                            <img src="{{ asset('storage/bukti/' . $get->bukti) }}" alt="" class="img-fluid">
                             @foreach ($pendaftar as $p)
                                 <div class="mb-3">
                                     <h4 class="mt-3">Pendaki {{ $loop->iteration }}</h4>
