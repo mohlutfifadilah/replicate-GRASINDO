@@ -15,8 +15,7 @@
     <h2>
         Standar Operasional Prosedur : Gunung Sindoro via Kledung
     </h2>
-    <img src="{{ asset('Keterangan Perjalanan Pendakian.png') }}" alt="" width="400" height="300"
-        style="margin-left: auto; margin-right: auto; display: block; margin-top: 20px;">
+    <img src="{{ asset('storage/assets/image/rute.png') }}" alt="" width="500"  height="700" style="margin-left: auto; margin-right: auto; display: block; margin-top: 20px;">
     <div class="medium-7 large-12 columns">
         <h5><b>Keterangan Perjalanan Pendakian</b></h5>
         <ul>
@@ -45,7 +44,7 @@
                 ini dapat membantu maupun menyulitkan pendaki. Dengan jalu yang tetap menanjak, akar dan dahan tersebut
                 dapat kita memanfaatkan untuk berpegangan. Namun, terdapat juga akar dan dahan yang menghalangi jalur,
                 sehingga cukup menyulitkan pendakian.</p>
-            <li>POS 4 - POS 5 (0,5 - 1 Jam)</li>
+            {{-- <li>POS 4 - POS 5 (0,5 - 1 Jam)</li>
             <p style="text-align: justify;">POS 4 (Samaranthu) berada pada ketinggian 2635 mdpl. Dikenal sebagai pos angker
                 sehingga jarang digunakan untuk berkemah. Pos samaranthu dipercaya berasal dari kata samar dan hantu, yang
                 artinya yang samar-samar atau hantuyang suka menyamar. Perjalanan menuju Pos 5 tidak terlalu jauh, dengan
@@ -65,28 +64,27 @@
                 pemandangan terlihat sangat indah. Selain itu, Pos 7 juga sudah tidak jauh lagi dengan puncak slamet. Trek
                 selanjutnya lebih berat, kita akan menuju ke lahan terbuka melewati Pos 8 (Samyang Kendit) kemudian menuju
                 Pos 9 (Pelawangan). Walaupun cukup berat, tapi pemandangannya juga sangat indah dengan bunga Edelweiss yang
-                banyak ditemukan jika sedang waktunya mekar.</p>
-            <li>POS 9 - Puncak (2 - 3 Jam)</li>
+                banyak ditemukan jika sedang waktunya mekar.</p> --}}
+            <li>POS 4 - Puncak (2 - 3 Jam)</li>
             <p style="text-align: justify;">Pos 9 merupakan batas vegetasi yang ditandai dengan adanya sebuah bendera Merah
                 Putih. Trek selanjutnya lebih berat lagi dan sangat menantang. Jalur pendakian yang dilalui cukup terjal
                 dengan banyak batuan dan kerikil yang labil bercampur dengan pasir. Sehingga, sangat rawan terpeleset dan
                 terjatuh jika tidak waspada dan hati-hati.</p>
         </ul>
-        <h5><b>Syarat dan Ketentuan</b></h5>
-        <p style="text-align: justify;">Calon Pendaki diwajibkan membawa barang dasar (akan diperiksa di basecamp) berupa :
+        <h5><b>Barang yang wajib dibawa :</b></h5>
+        <p style="text-align: justify;">Calon Pendaki diwajibkan membawa barang berupa :
         </p>
         <ul>
-            <li>Jaket</li>
-            <li>Sleeping Bag</li>
-            <li>Nesting</li>
-            <li>Kompor</li>
-            <li>Matras</li>
-            <li>Tenda</li>
-            <li>Jas Hujan</li>
-            <li>Sepatu Tracking / Sepatu Gunung</li>
-            <li>Tumbler / Jerigen</li>
+            <li>Peralatan Pribadi seperti Sleeping Bag, Senter/Headlamp, Jas Hujan</li>
+            <li>Sepatu Tracking (Wajib bagi yang melakukan pendakian Camp)</li>
+            <li>Peralatan Pribadi seperti jas hujan, senter/Headlamp dan juga sepatu tracking. (Wajib bagi yang melakukan pendakian tektok)</li>
+            <li>Untuk perbekalan air mineral/orangnya 3 liter untuk yang camp</li>
+            <li>Sedangkan yang tek-tok/orangnya 1.5 liter.</li>
+            <li>⁠Pendakian Tek-tok wajib menggunakan Emergency Blanket (minimal 1 /rombongan)</li>
+            <li>Pendakian Tek-tok wajib membawa Nasi Bungkus (/orangnya 1)</li>
+            <li>Bagi Perempuan yang sedang berhalangan, batas pendakian hanya sampai Sunrise Camp</li>
         </ul>
-        <h5><b>Larangan-Larangan saat Pendakian</b></h5>
+        {{-- <h5><b>Larangan-Larangan saat Pendakian</b></h5>
         <p style="text-align: justify;">Calon Pendaki diwajibkan membawa barang dasar (akan diperiksa di basecamp) berupa :
         </p>
         <ol>
@@ -99,7 +97,7 @@
             <li>Menangkap, membunuh, melukai, atau membawa keluar satwa dari kawasan hutan Gunung Slamet.</li>
             <li>Membawa minuman keras, obat terlarang, senjata tajam, senapan.</li>
         </ol>
-        {{-- <center style="color: red;">
+        <center style="color: red;">
             <h5><b>Daftar Blacklist Pendaki</b></h5>
         </center>
         <div class="row column">
