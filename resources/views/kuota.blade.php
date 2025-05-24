@@ -38,7 +38,7 @@
                         @if ($k->kuota_sisa === $k->kuota_full)
                         <p>-</p>
                         @else
-                        <a class="btn btn-sm btn-primary" href="{{ route('bookingg', $k->id) }}">Booking</a>
+                        <a class="btn btn-sm text-white" style="background-color: #FF8D21;" href="{{ route('bookingg', $k->id) }}">Booking</a>
                         @endif
                     </td>
                 </tr>
