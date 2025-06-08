@@ -85,6 +85,48 @@
                                         @endif
                                     </td>
                                     <td class="text-center">
+                                        <form action="{{ route('survey', $pendaftar_first->id) }}" method="post">
+                                            @csrf
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-info btn-sm alert p-3" data-toggle="modal" data-target="#survey">
+                                                <i class="fas fa-poll-h"></i> Survey
+                                            </button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="survey" tabindex="-1" role="dialog" aria-labelledby="surveyTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLongTitle">Survey</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="form-row text-left">
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="email">Email</label>
+                                                                    <input type="text" class="form-control" id="email" name="email">
+                                                                    @if (session('email'))
+                                                                    <p class="help-text" id="email" style="color: red;">{{ session('email') }}</p>
+                                                                    @endif
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="no_telepon">Nomor Telepon</label>
+                                                                    <input type="text" class="form-control" id="no_telepon" name="no_telepon">
+                                                                    @if (session('no_telepon'))
+                                                                    <p class="help-text" id="no_telepon" style="color: red;">{{ session('no_telepon') }}</p>
+                                                                    @endif
+                                                                </div>                  </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+                                                            <button type="submit" class="btn btn-primary">Kirim</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
                                         <form action="{{ route('bayar', $pendaftar_first->id) }}" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <!-- Button trigger modal -->

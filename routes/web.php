@@ -15,6 +15,7 @@ use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\UsersController;
 use App\Models\Identitas;
 use App\Models\Kewarganegaraan;
+use App\Models\Kewargbooanegaraan;
 use App\Models\Kuota;
 use App\Models\User;
 use Illuminate\Support\Facades\Request;
@@ -85,6 +86,7 @@ Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
 Route::get('/booking', [BookingController::class, 'index'])->name('booking');
 Route::get('/booking/{id}', [BookingController::class, 'booking'])->name('bookingg');
 Route::post('/registrasi/{id}', [BookingController::class, 'registrasi'])->name('registrasi');
+Route::post('/survey/{id}', [BookingController::class, 'survey'])->name('survey');
 Route::post('/bayar/{id}', [BookingController::class, 'bayar'])->name('bayar');
 Route::delete('/hapus_booking/{id}', [BookingController::class, 'delete'])->name('hapus_booking');
 

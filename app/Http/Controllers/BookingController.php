@@ -7,6 +7,7 @@ use App\Models\Pendaftar;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class BookingController extends Controller
@@ -129,6 +130,48 @@ class BookingController extends Controller
         return redirect('booking')->with('sukses','Booking berhasil dihapus');
     }
 
+    public function survey(Request $request, $id){
+
+        // $response = Http::post('http://127.0.0.1:5000/predict', [
+        //     'pernah_mendaki'     => 1,
+        //     'jumlah_pendakian'   => 1,
+        //     'diatas_2000'        => 1,
+        //     'bawa_beban'         => 1,
+        //     'pernah_inap'        => 1,
+        //     'jumlah_anggota'     => 8
+        // ]);
+
+        // dd($request);
+
+        $fitur = [
+            (int) $request->pernah_mendaki,
+            (int) $request->jumlah_pendakian,
+            (int) $request->diatas_2000,
+            (int) $request->bawa_beban,
+            (int) $request->pernah_inap,
+            (int) $request->jumlah_anggota,
+        ];
+
+        $response = Http::post('http://127.0.0.1:5000/predict', [
+            'fitur' => $fitur
+        ]);
+
+        if ($response->successful()) {
+            $json = $response->json();
+
+            return response()->json([
+                'prediksi' => $json['prediksi'],
+                'hasil_klasifikasi' => $json['kategori']
+            ]);
+        } else {
+            return response()->json([
+                'error' => 'Gagal menghubungi API Flask.'
+            ], 500);
+        }
+        
+        // Alert::success('Berhasil', 'Pembayaran berhasil!');
+        // return redirect('booking')->with('sukses','Booking berhasil dihapus');
+    }
     public function bayar(Request $request, $id){
 
         if ($request->file('bukti')) {
