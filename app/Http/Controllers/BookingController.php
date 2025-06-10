@@ -141,11 +141,15 @@ class BookingController extends Controller
         //     'jumlah_anggota'     => 8
         // ]);
 
-        // dd($request);
+        if(!$request->jumlah_pendakian){
+            $jumlah_pendakian = 0;
+        } else {
+            $jumlah_pendakian = $request->jumlah_pendakian;
+        }
 
         $fitur = [
             (int) $request->pernah_mendaki,
-            (int) $request->jumlah_pendakian,
+            (int) $jumlah_pendakian,
             (int) $request->diatas_2000,
             (int) $request->bawa_beban,
             (int) $request->pernah_inap,
@@ -159,16 +163,14 @@ class BookingController extends Controller
         if ($response->successful()) {
             $json = $response->json();
 
-            return response()->json([
-                'prediksi' => $json['prediksi'],
-                'hasil_klasifikasi' => $json['kategori']
-            ]);
+            Alert::success('Berhasil', 'Booking berhasil, silahkan lanjutkan pembayaran!');
+            return redirect()->route('booking')->with('sukses', 'Registrasi Pendakian Berhasil!');
         } else {
             return response()->json([
                 'error' => 'Gagal menghubungi API Flask.'
             ], 500);
         }
-        
+
         // Alert::success('Berhasil', 'Pembayaran berhasil!');
         // return redirect('booking')->with('sukses','Booking berhasil dihapus');
     }

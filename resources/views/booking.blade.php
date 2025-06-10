@@ -105,19 +105,73 @@
                                                         <div class="modal-body">
                                                             <div class="form-row text-left">
                                                                 <div class="form-group col-md-6">
-                                                                    <label for="email">Email</label>
-                                                                    <input type="text" class="form-control" id="email" name="email">
-                                                                    @if (session('email'))
-                                                                    <p class="help-text" id="email" style="color: red;">{{ session('email') }}</p>
+                                                                    <label for="pernah_mendaki">Pernah mendaki sebelumnya ?</label>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="pernah_mendaki" id="pernah_mendaki_1" value="1">
+                                                                        <label class="form-check-label" for="pernah_mendaki_1">Pernah</label>
+                                                                    </div>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="pernah_mendaki" id="pernah_mendaki_0" value="0">
+                                                                        <label class="form-check-label" for="pernah_mendaki_0">Tidak Pernah</label>
+                                                                    </div>
+                                                                    @if (session('pernah_mendaki'))
+                                                                        <p class="help-text" id="pernah_mendaki" style="color: red;">{{ session('pernah_mendaki') }}</p>
                                                                     @endif
                                                                 </div>
                                                                 <div class="form-group col-md-6">
-                                                                    <label for="no_telepon">Nomor Telepon</label>
-                                                                    <input type="text" class="form-control" id="no_telepon" name="no_telepon">
-                                                                    @if (session('no_telepon'))
-                                                                    <p class="help-text" id="no_telepon" style="color: red;">{{ session('no_telepon') }}</p>
+                                                                    <label for="jumlah_pendakian">Berapa kali mendaki ?</label>
+                                                                    <input type="text" class="form-control" id="jumlah_pendakian" name="jumlah_pendakian" disabled>
+                                                                    @if (session('jumlah_pendakian'))
+                                                                        <p class="help-text" id="jumlah_pendakian" style="color: red;">{{ session('jumlah_pendakian') }}</p>
                                                                     @endif
-                                                                </div>                  </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row text-left">
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="diatas_2000">Pernah ke ketinggian > 2000 Mdpl ?</label>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="diatas_2000" id="diatas_2000_1" value="1">
+                                                                        <label class="form-check-label" for="diatas_2000_1">Pernah</label>
+                                                                    </div>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="diatas_2000" id="diatas_2000_0" value="0">
+                                                                        <label class="form-check-label" for="diatas_2000_0">Tidak Pernah</label>
+                                                                    </div>
+                                                                    @if (session('diatas_2000'))
+                                                                        <p class="help-text" id="diatas_2000" style="color: red;">{{ session('diatas_2000') }}</p>
+                                                                    @endif
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="bawa_beban">Pernah berjalan membawa beban ?</label>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="bawa_beban" id="bawa_beban_1" value="1">
+                                                                        <label class="form-check-label" for="bawa_beban_1">Pernah</label>
+                                                                    </div>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="bawa_beban" id="bawa_beban_0" value="0">
+                                                                        <label class="form-check-label" for="bawa_beban_0">Tidak Pernah</label>
+                                                                    </div>
+                                                                    @if (session('bawa_beban'))
+                                                                        <p class="help-text" id="bawa_beban" style="color: red;">{{ session('bawa_beban') }}</p>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row text-left">
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="pernah_inap">Pernah berkemah diketinggian ?</label>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="pernah_inap" id="pernah_inap_1" value="1">
+                                                                        <label class="form-check-label" for="pernah_inap_1">Pernah</label>
+                                                                    </div>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="pernah_inap" id="pernah_inap_0" value="0">
+                                                                        <label class="form-check-label" for="pernah_inap_0">Tidak Pernah</label>
+                                                                    </div>
+                                                                    @if (session('pernah_inap'))
+                                                                        <p class="help-text" id="pernah_inap" style="color: red;">{{ session('pernah_inap') }}</p>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
@@ -297,5 +351,27 @@
             }
         });
     }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const pernahRadio = document.getElementById("pernah_mendaki_1");
+        const tidakPernahRadio = document.getElementById("pernah_mendaki_0");
+        const jumlahPendakian = document.getElementById("jumlah_pendakian");
+
+        // Saat load, pastikan jumlah pendakian disabled
+        jumlahPendakian.disabled = true;
+
+        pernahRadio.addEventListener("change", function() {
+            if (this.checked) {
+                jumlahPendakian.disabled = false;
+            }
+        });
+
+        tidakPernahRadio.addEventListener("change", function() {
+            if (this.checked) {
+                jumlahPendakian.disabled = true;
+                jumlahPendakian.value = ""; // kosongkan isinya
+            }
+        });
+    });
 </script>
 @endsection
