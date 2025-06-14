@@ -68,6 +68,8 @@
                                                                 @endforeach
                                                             </tbody>
                                                         </table>
+                                                        <b>Kategori : {{ $pendaftar_first->kategori }}</b> <br>
+                                                        <b>Pesan : </b>{{ $pendaftar_first->pesan }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -85,142 +87,146 @@
                                         @endif
                                     </td>
                                     <td class="text-center">
-                                        <form action="{{ route('survey', $pendaftar_first->id) }}" method="post">
-                                            @csrf
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-info btn-sm alert p-3" data-toggle="modal" data-target="#survey">
-                                                <i class="fas fa-poll-h"></i> Survey
-                                            </button>
+                                        @if (!$pendaftar_first->kategori)
+                                            <form action="{{ route('survey', $pendaftar_first->id) }}" method="post">
+                                                @csrf
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-info btn-sm alert p-3" data-toggle="modal" data-target="#survey">
+                                                    <i class="fas fa-poll-h"></i> Survey
+                                                </button>
 
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="survey" tabindex="-1" role="dialog" aria-labelledby="surveyTitle" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLongTitle">Survey</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="form-row text-left">
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="pernah_mendaki">Pernah mendaki sebelumnya ?</label>
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" name="pernah_mendaki" id="pernah_mendaki_1" value="1">
-                                                                        <label class="form-check-label" for="pernah_mendaki_1">Pernah</label>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="survey" tabindex="-1" role="dialog" aria-labelledby="surveyTitle" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLongTitle">Survey</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="form-row text-left">
+                                                                    <div class="form-group col-md-6">
+                                                                        <label for="pernah_mendaki">Pernah mendaki sebelumnya ?</label>
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="radio" name="pernah_mendaki" id="pernah_mendaki_1" value="1">
+                                                                            <label class="form-check-label" for="pernah_mendaki_1">Pernah</label>
+                                                                        </div>
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="radio" name="pernah_mendaki" id="pernah_mendaki_0" value="0">
+                                                                            <label class="form-check-label" for="pernah_mendaki_0">Tidak Pernah</label>
+                                                                        </div>
+                                                                        @if (session('pernah_mendaki'))
+                                                                            <p class="help-text" id="pernah_mendaki" style="color: red;">{{ session('pernah_mendaki') }}</p>
+                                                                        @endif
                                                                     </div>
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" name="pernah_mendaki" id="pernah_mendaki_0" value="0">
-                                                                        <label class="form-check-label" for="pernah_mendaki_0">Tidak Pernah</label>
+                                                                    <div class="form-group col-md-6">
+                                                                        <label for="jumlah_pendakian">Berapa kali mendaki ?</label>
+                                                                        <input type="text" class="form-control" id="jumlah_pendakian" name="jumlah_pendakian" disabled>
+                                                                        @if (session('jumlah_pendakian'))
+                                                                            <p class="help-text" id="jumlah_pendakian" style="color: red;">{{ session('jumlah_pendakian') }}</p>
+                                                                        @endif
                                                                     </div>
-                                                                    @if (session('pernah_mendaki'))
-                                                                        <p class="help-text" id="pernah_mendaki" style="color: red;">{{ session('pernah_mendaki') }}</p>
-                                                                    @endif
                                                                 </div>
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="jumlah_pendakian">Berapa kali mendaki ?</label>
-                                                                    <input type="text" class="form-control" id="jumlah_pendakian" name="jumlah_pendakian" disabled>
-                                                                    @if (session('jumlah_pendakian'))
-                                                                        <p class="help-text" id="jumlah_pendakian" style="color: red;">{{ session('jumlah_pendakian') }}</p>
-                                                                    @endif
+                                                                <div class="form-row text-left">
+                                                                    <div class="form-group col-md-6">
+                                                                        <label for="diatas_2000">Pernah ke ketinggian > 2000 Mdpl ?</label>
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="radio" name="diatas_2000" id="diatas_2000_1" value="1">
+                                                                            <label class="form-check-label" for="diatas_2000_1">Pernah</label>
+                                                                        </div>
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="radio" name="diatas_2000" id="diatas_2000_0" value="0">
+                                                                            <label class="form-check-label" for="diatas_2000_0">Tidak Pernah</label>
+                                                                        </div>
+                                                                        @if (session('diatas_2000'))
+                                                                            <p class="help-text" id="diatas_2000" style="color: red;">{{ session('diatas_2000') }}</p>
+                                                                        @endif
+                                                                    </div>
+                                                                    <div class="form-group col-md-6">
+                                                                        <label for="bawa_beban">Pernah berjalan membawa beban ?</label>
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="radio" name="bawa_beban" id="bawa_beban_1" value="1">
+                                                                            <label class="form-check-label" for="bawa_beban_1">Pernah</label>
+                                                                        </div>
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="radio" name="bawa_beban" id="bawa_beban_0" value="0">
+                                                                            <label class="form-check-label" for="bawa_beban_0">Tidak Pernah</label>
+                                                                        </div>
+                                                                        @if (session('bawa_beban'))
+                                                                            <p class="help-text" id="bawa_beban" style="color: red;">{{ session('bawa_beban') }}</p>
+                                                                        @endif
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-row text-left">
+                                                                    <div class="form-group col-md-6">
+                                                                        <label for="pernah_inap">Pernah berkemah diketinggian ?</label>
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="radio" name="pernah_inap" id="pernah_inap_1" value="1">
+                                                                            <label class="form-check-label" for="pernah_inap_1">Pernah</label>
+                                                                        </div>
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="radio" name="pernah_inap" id="pernah_inap_0" value="0">
+                                                                            <label class="form-check-label" for="pernah_inap_0">Tidak Pernah</label>
+                                                                        </div>
+                                                                        @if (session('pernah_inap'))
+                                                                            <p class="help-text" id="pernah_inap" style="color: red;">{{ session('pernah_inap') }}</p>
+                                                                        @endif
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-row text-left">
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="diatas_2000">Pernah ke ketinggian > 2000 Mdpl ?</label>
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" name="diatas_2000" id="diatas_2000_1" value="1">
-                                                                        <label class="form-check-label" for="diatas_2000_1">Pernah</label>
-                                                                    </div>
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" name="diatas_2000" id="diatas_2000_0" value="0">
-                                                                        <label class="form-check-label" for="diatas_2000_0">Tidak Pernah</label>
-                                                                    </div>
-                                                                    @if (session('diatas_2000'))
-                                                                        <p class="help-text" id="diatas_2000" style="color: red;">{{ session('diatas_2000') }}</p>
-                                                                    @endif
-                                                                </div>
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="bawa_beban">Pernah berjalan membawa beban ?</label>
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" name="bawa_beban" id="bawa_beban_1" value="1">
-                                                                        <label class="form-check-label" for="bawa_beban_1">Pernah</label>
-                                                                    </div>
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" name="bawa_beban" id="bawa_beban_0" value="0">
-                                                                        <label class="form-check-label" for="bawa_beban_0">Tidak Pernah</label>
-                                                                    </div>
-                                                                    @if (session('bawa_beban'))
-                                                                        <p class="help-text" id="bawa_beban" style="color: red;">{{ session('bawa_beban') }}</p>
-                                                                    @endif
-                                                                </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+                                                                <button type="submit" class="btn btn-primary">Kirim</button>
                                                             </div>
-                                                            <div class="form-row text-left">
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="pernah_inap">Pernah berkemah diketinggian ?</label>
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" name="pernah_inap" id="pernah_inap_1" value="1">
-                                                                        <label class="form-check-label" for="pernah_inap_1">Pernah</label>
-                                                                    </div>
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" name="pernah_inap" id="pernah_inap_0" value="0">
-                                                                        <label class="form-check-label" for="pernah_inap_0">Tidak Pernah</label>
-                                                                    </div>
-                                                                    @if (session('pernah_inap'))
-                                                                        <p class="help-text" id="pernah_inap" style="color: red;">{{ session('pernah_inap') }}</p>
-                                                                    @endif
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
-                                                            <button type="submit" class="btn btn-primary">Kirim</button>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </form>
-                                        <form action="{{ route('bayar', $pendaftar_first->id) }}" method="post" enctype="multipart/form-data">
-                                            @csrf
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-primary btn-sm alert p-3" data-toggle="modal" data-target="#bukti">
-                                                <i class="fas fa-ticket-alt"></i> Bayar
-                                            </button>
+                                            </form>
+                                        @else
 
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="bukti" tabindex="-1" role="dialog" aria-labelledby="buktiTitle" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLongTitle">Pembayaran</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="text-left">
-                                                                <p>Pembayaran dikirim melalui :</p>
-                                                                <ol>
-                                                                    <li>Bank BRI : 0932 2198 0983 (Maman)</li>
-                                                                    <li>Bank BRI : 0932 2198 0983 (Maman)</li>
-                                                                    <li>Bank BRI : 0932 2198 0983 (Maman)</li>
-                                                                </ol>
+                                            <form action="{{ route('bayar', $pendaftar_first->id) }}" method="post" enctype="multipart/form-data">
+                                                @csrf
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-primary btn-sm alert p-3" data-toggle="modal" data-target="#bukti">
+                                                    <i class="fas fa-ticket-alt"></i> Bayar
+                                                </button>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="bukti" tabindex="-1" role="dialog" aria-labelledby="buktiTitle" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLongTitle">Pembayaran</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
                                                             </div>
-                                                            <br>
-                                                            <div class="form-group text-center">
-                                                                <label for="bukti">Upload Bukti Pembayaran</label>
-                                                                <input type="file" class="form-control-file" id="bukti" name="bukti">
+                                                            <div class="modal-body">
+                                                                <div class="text-left">
+                                                                    <p>Pembayaran dikirim melalui :</p>
+                                                                    <ol>
+                                                                        <li>Bank BRI : 0932 2198 0983 (Maman)</li>
+                                                                        <li>Bank BRI : 0932 2198 0983 (Maman)</li>
+                                                                        <li>Bank BRI : 0932 2198 0983 (Maman)</li>
+                                                                    </ol>
+                                                                </div>
+                                                                <br>
+                                                                <div class="form-group text-center">
+                                                                    <label for="bukti">Upload Bukti Pembayaran</label>
+                                                                    <input type="file" class="form-control-file" id="bukti" name="bukti">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
-                                                            <button type="submit" class="btn btn-primary">Kirim</button>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+                                                                <button type="submit" class="btn btn-primary">Kirim</button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </form>
+                                            </form>
+                                        @endif
                                         <form id="delete-form-{{ $pendaftar_first->id }}" action="{{ route('hapus_booking', $pendaftar_first->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')

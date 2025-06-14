@@ -52,7 +52,7 @@ Route::get('/cek_kuota', function () {
     // Ambil tanggal akhir bulan
     $endOfMonth = $today->endOfMonth();
     // Ambil semua data kuota yang memiliki tanggal naik di antara tanggal sekarang dan akhir bulan
-    $kuota = Kuota::whereBetween('tanggal', [now()->toDateString(), $endOfMonth->toDateString()])->get();
+    $kuota = Kuota::whereBetween('tanggal', [now()->addDay(1)->toDateString(), $endOfMonth->toDateString()])->get();
 
     return view('kuota', compact('kuota'));
 });

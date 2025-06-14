@@ -162,9 +162,23 @@ class BookingController extends Controller
 
         if ($response->successful()) {
             $json = $response->json();
+            $pendaftar = Pendaftar::find($id);
 
-            Alert::success('Berhasil', 'Booking berhasil, silahkan lanjutkan pembayaran!');
-            return redirect()->route('booking')->with('sukses', 'Registrasi Pendakian Berhasil!');
+            if ($json['prediksi'] === 0){
+                $pesan = "Disarankan membawa porter atau guide, terutama jika belum terbiasa membawa beban berat atau melakukan pendakian jarak jauh. Jangan memaksakan diri jika kondisi fisik tidak fit. Pantau cuaca minimal 1–2 hari sebelum keberangkatan. Selalu utamakan keselamatan, bukan puncak.";
+            } else if ($json['prediksi'] === 1){
+                $pesan = "Sudah dapat melakukan pendakian mandiri, tetapi tetap perlu evaluasi kesiapan fisik dan logistik. Disarankan mulai belajar navigasi dasar dan manajemen perjalanan tim. Mulai biasakan mendaki dengan membawa beban sendiri dan mengatur ritme perjalanan. Cek kondisi cuaca dan jalur pendakian secara detail, serta siapkan rencana cadangan. Pelajari pertolongan pertama dasar dan etika mendaki (Leave No Trace).";
+            } else {
+                $pesan = "Siap untuk pendakian panjang, teknikal, atau ekspedisi. Perhatikan manajemen risiko dan cuaca ekstrem. Idealnya menjadi pemimpin tim dan bertanggung jawab atas keselamatan kelompok.Jadilah contoh dalam konservasi alam dan etika lingkungan.";
+            }
+
+            $pendaftar->update([
+                'kategori' => $json['kategori'],
+                'prediksi' => $json['prediksi'],
+                'pesan' => $pesan,
+            ]);
+            Alert::success('Berhasil', 'Survey Berhasil diisi!, silahkan lanjutkan pembayaran');
+            return redirect()->route('booking')->with('sukses', 'Survey Berhasil diisi!');
         } else {
             return response()->json([
                 'error' => 'Gagal menghubungi API Flask.'

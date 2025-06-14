@@ -7,10 +7,10 @@
             <img src="{{ asset('storage/assets/image/carousel1.jpg') }}" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-            <img src="{{ asset('storage/assets/image/carousel1.jpg') }}" class="d-block w-100" alt="...">
+            <img src="{{ asset('storage/assets/image/carousel2.jpg') }}" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-            <img src="{{ asset('storage/assets/image/carousel1.jpg') }}" class="d-block w-100" alt="...">
+            <img src="{{ asset('storage/assets/image/carousel3.jpg') }}" class="d-block w-100" alt="...">
         </div>
     </div>
 </div>

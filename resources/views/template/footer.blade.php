@@ -11,8 +11,9 @@
                     <div class="container-fluid">
                         <hr style="background-color: #FFFFFF;">
                         <div class="contact" style="font-size: 14px; margin-left: 5px;">
-                            <ion-icon name="logo-whatsapp" class="text-white bg-success p-1"></ion-icon> 082189374092 (Basecamp) <br> <br>
-                            <ion-icon name="logo-whatsapp" class="text-white bg-success p-1"></ion-icon> 082189374092 (Mas Rahmat)
+                            <ion-icon name="logo-whatsapp" class="text-white bg-success p-1"></ion-icon> 081326971413 (Basecamp)
+                            {{-- <br> <br>
+                            <ion-icon name="logo-whatsapp" class="text-white bg-success p-1"></ion-icon> 082189374092 (Mas Rahmat) --}}
                         </div>
                     </div>
                 </div>
@@ -21,13 +22,13 @@
                     <div class="container-fluid">
                         <hr style="background-color: #FFFFFF;">
                         <div class="social-icons">
-                            {{-- <a href="" target="_blank" rel="noopener noreferrer" class="social-icon text-decoration-none whatsapp">
-                                <ion-icon name="logo-whatsapp"></ion-icon>
-                            </a> --}}
-                            <a href="" target="_blank" rel="noopener noreferrer" class="social-icon text-decoration-none instagram">
+                            <a href="https://www.facebook.com/profile.php?id=61557553208380&mibextid=rS40aB7S9Ucbxw6v" target="_blank" rel="noopener noreferrer" class="social-icon text-decoration-none facebook">
+                                <ion-icon name="logo-facebook"></ion-icon>
+                            </a>
+                            <a href="https://www.instagram.com/sindoroviakledung_?igsh=OXJyMnU4aTNyYzY=" target="_blank" rel="noopener noreferrer" class="social-icon text-decoration-none instagram">
                                 <ion-icon name="logo-instagram"></ion-icon>
                             </a>
-                            <a href="" target="_blank" rel="noopener noreferrer" class="social-icon text-decoration-none tiktok">
+                            <a href="https://www.tiktok.com/@grasindo.indonesia?_t=ZS-8x7ZGVVkubS&_r=1" target="_blank" rel="noopener noreferrer" class="social-icon text-decoration-none tiktok">
                                 <ion-icon name="logo-tiktok"></ion-icon>
                             </a>
                         </div>

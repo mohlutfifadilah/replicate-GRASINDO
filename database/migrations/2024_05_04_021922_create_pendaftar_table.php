@@ -25,6 +25,9 @@ return new class extends Migration
             $table->date('tanggal_turun')->nullable();
             $table->text('bukti')->nullable();
             $table->integer('status')->nullable();
+            $table->text('kategori')->nullable();
+            $table->text('prediksi')->nullable();
+            $table->text('pesan')->nullable();
             $table->timestamps();
         });
     }
